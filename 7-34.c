@@ -5,36 +5,40 @@ typedef struct{
     char six;
     char phoneNumber[16],mobilePhoneNumber[16];
 }phoneList;
-
+void printPhoneList(phoneList *list);
 int main(void){
     int N,i,listLenght;
     scanf("%d",&N);
-    phoneList *list = (phoneList*)malloc(sizeof(phoneList)*N);
+    //phoneList *list = (phoneList*)malloc(sizeof(phoneList)*N);
+    phoneList list[3];
     listLenght = N;
     for(i=0;i<N;i++){
         scanf("%s %s %c %s %s",
-        list[i].name,list[i].birthday,list[i].six,
+        list[i].name,list[i].birthday,&list[i].six,
         list[i].phoneNumber,list[i].mobilePhoneNumber);
     }
-    scanf("%d",N);
-    int *search = (int*)malloc(sizeof(int)*N);
+    scanf("%d",&N);
+    //int *search = (int*)malloc(sizeof(int)*N);
+    int search[3];
     for(i=0;i<N;i++){
-        scanf("%d",search[i]);
+        scanf("%d",&search[i]);
     }
 
     for(i=0;i<N;i++){
         if(search[i]<listLenght){
-            printPhoneList(list[i]);
+            printPhoneList(&list[i]);
         }else{
             printf("Not Found");
         }
     }
+    //free(phoneList);
+    //free(search);
     return 0;
 }
 void printPhoneList(phoneList *list){
-    printf("1.%s ",list->name);
-    printf("2.%s ",list->birthday);
-    printf("3.%c ",list->six);
-    printf("4.%s ",list->phoneNumber);
-    printf("5.%s",list->mobilePhoneNumber);
+    printf("%s ",list->name);
+    printf("%s ",list->birthday);
+    printf("%c ",list->six);
+    printf("%s ",list->phoneNumber);
+    printf("%s",list->mobilePhoneNumber);
 }

@@ -4,8 +4,28 @@
     // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+        {            "name": "C's Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${file}.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": true,
+            "internalConsoleOptions": "neverOpen",
+            "MIMode": "gdb",
+            "miDebuggerPath": "E:\\Program Files\\Dev-Cpp\\MinGW64\\bin\\gdb.exe",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+        },
         {
-            "name": "C's Launch",
+            "name": "C's building",
             "type": "cppdbg",
             "request": "launch",
             "program": "${file}.exe",

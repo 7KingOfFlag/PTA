@@ -14,14 +14,29 @@
                 "-Wall"
             ],
             "group": {
-                "kind":"build",
+                "kind": "build",
                 "isDefault": true
-            },   
+            },
             "presentation": {
-                "panel":"dedicated"
+                "panel": "dedicated",
+                "echo": true
             },
             // Use the standard MS compiler pattern to detect errors, warnings and infos
-            "problemMatcher": "$gcc"
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceRoot}"
+                ],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            }
         }
     ]
 }
