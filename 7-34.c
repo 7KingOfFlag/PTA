@@ -1,26 +1,34 @@
 #include<stdio.h>
-
+#include<stdlib.h>
 typedef struct{
-    char *name,*birthday,*six;
-    char *phoneNumber,*mobilePhoneNumber;
+    char name[12],birthday[10];
+    char six[1];
+    char phoneNumber[12],mobilePhoneNumber[14];
 }phoneList;
 
 int main(void){
-    phoneList myList={
-        "ChanYongBiao",
-        "1998.03.19",
-        "man",
-        "18867763866",
-        "17816115792"};
-    printPhoneList(&myList);
-
-    //getchar();
+    int N,i;
+    scanf("%d",&N);
+    printf("your input %d\n",N);
+    phoneList *list = (phoneList*)malloc(sizeof(phoneList)*N);
+    for(i=0;i<N;i++){
+        printf("please key phoneList\n");
+        scanf("%s %s %s %s %s",
+        list[i].name,list[i].birthday,list[i].six,
+        list[i].phoneNumber,list[i].mobilePhoneNumber);
+        printf("list insat done!!\n");
+    }
+    for(i=0;i<N;i++){
+        printPhoneList(list[i]);
+        printf("\n-------------------\n");
+    }
+    getchar();
     return 0;
 }
 void printPhoneList(phoneList *list){
-    printf("Name:%s\n",list->name);
-    printf("Birthday:%s\n",list->birthday);
-    printf("Six:%s\n",list->six);
-    printf("PhoneNumber:%s\n",list->phoneNumber);
-    printf("MobilePhoneNumber:%s\n",list->mobilePhoneNumber);
+    printf("%s ",list->name);
+    printf("%s ",list->birthday);
+    printf("%s ",list->six);
+    printf("%s ",list->phoneNumber);
+    printf("%s",list->mobilePhoneNumber);
 }
