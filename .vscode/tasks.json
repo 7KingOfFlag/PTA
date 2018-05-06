@@ -10,7 +10,7 @@
             "args": [
                 "${file}",
                 "-o",
-                "${file}.exe",
+                "${fileDirname}\\${fileBasename}.exe",
                 "-Wall"
             ],
             "group": {
@@ -23,7 +23,7 @@
             },
             // Use the standard MS compiler pattern to detect errors, warnings and infos
             "problemMatcher": {
-                "owner": "cpp",
+                "owner": "gcc",
                 "fileLocation": [
                     "relative",
                     "${workspaceRoot}"

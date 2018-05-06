@@ -8,6 +8,7 @@ typedef struct{
 void printPhoneList(phoneList *list);
 int main(void){
     int N,i,listLenght;
+    int search[3];
     scanf("%d",&N);
     //phoneList *list = (phoneList*)malloc(sizeof(phoneList)*N);
     phoneList list[3];
@@ -16,10 +17,11 @@ int main(void){
         scanf("%s %s %c %s %s",
         list[i].name,list[i].birthday,&list[i].six,
         list[i].phoneNumber,list[i].mobilePhoneNumber);
+        printPhoneList(&list[i]);
     }
     scanf("%d",&N);
     //int *search = (int*)malloc(sizeof(int)*N);
-    int search[3];
+
     for(i=0;i<N;i++){
         scanf("%d",&search[i]);
     }
