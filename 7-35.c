@@ -24,16 +24,21 @@ int main(void){
             }
         }
     }
+	i=gcd(sumA,sumB);
+	i=gcd(n,i);
 
-    if(sumA>0){
-        i=gcd(sumA,sumB);
-    }else if(sumA<0){
-        i=gcd((-1)*sumA,sumB);
-    }
+	sumA=sumA*i/n;
+	sumB=sumB*i;
 
-    
+	i=gcd(sumA,sumB);
+    sumA=sumA/i;
+	sumB=sumB/i;
 
-    printf("%d/%d",sumA,sumB);
+	if(sumB==1){
+		printf("%d\n",sumA);
+	}else{
+		printf("%d/%d\n",sumA,sumB);
+	}
     return 0;
 }
 int gcd(int a,int b){
@@ -41,6 +46,9 @@ int gcd(int a,int b){
     if(a==b){
         return a;
     }else{
+		if(a<0){
+			a=-a;
+		}
         if(a<b){
             t=a;
             a=b;
