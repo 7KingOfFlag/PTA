@@ -1,2 +1,7 @@
+#folder
 Exe
-.vscode
+
+#file:
+
+.vscode/tasks.json
+*.json
