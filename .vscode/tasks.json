@@ -6,8 +6,9 @@
         {
             "label": "Gcc",
             "type": "shell",
-            "command": "E:\\Program Files\\Dev-Cpp\\MinGW64\\bin\\gcc",
+            "command": "C:\\Program Files\\Dev-Cpp\\MinGW64\\bin\\x86_64-w64-mingw32-gcc",
             "args": [
+                "-m32",
                 "${file}",
                 "-o",
                 "${fileDirname}\\${fileBasename}.exe",

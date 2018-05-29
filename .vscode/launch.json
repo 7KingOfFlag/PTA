@@ -17,7 +17,7 @@
             "externalConsole": true,
             "internalConsoleOptions": "neverOpen",
             "MIMode": "gdb",
-            "miDebuggerPath": "E:\\Program Files\\Dev-Cpp\\MinGW64\\bin\\gdb.exe",
+            "miDebuggerPath": "C:\\Program Files\\Dev-Cpp\\MinGW64\\bin\\gdb.exe",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
@@ -38,7 +38,7 @@
             "externalConsole": true,
             "internalConsoleOptions": "neverOpen",
             "MIMode": "gdb",
-            "miDebuggerPath": "E:\\Program Files\\Dev-Cpp\\MinGW64\\bin\\gdb.exe",
+            "miDebuggerPath": "C:\\Program Files\\Dev-Cpp\\MinGW64\\bin\\gdb.exe",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
