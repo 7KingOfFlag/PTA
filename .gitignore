@@ -1,7 +1,8 @@
 #folder
 Exe
-
+CodeM
 #file:
 
 .vscode/tasks.json
 *.json
+*.exe
