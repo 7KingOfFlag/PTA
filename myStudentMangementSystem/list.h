@@ -20,11 +20,16 @@ typedef struct NODE
 	student student;
 } Node;
 
-typedef struct root {
+typedef struct root
+{
 	struct NODE *link;
 	int size;
-}Root;
-void printSll(const Root *root)
+} Root;
+
+const int NodeSize = sizeof(Node);
+
+	void
+	printSll(const Root *root)
 {
 	int i;
 	if (root == NULL)
@@ -44,53 +49,69 @@ void printSll(const Root *root)
 	}
 }
 
-int sllInsert(Root root, student *new_value)
+Node *newNode()
 {
-	Node *new_Node, *current;
+	Node *new_Node = (Node *)malloc(sizeof(Node));
+	if (new_Node == NULL)
+		return NULL;
+
+	new_Node->link = NULL;
+	return new_Node;
+}
+/*
+int sllInsert(Root root, Node *new_Node)
+{
+	Node *current;
 	current = root.link;
 	//寻找插入节点
 	char RootLInkflag = FALSE;
-	if (current != NULL ) {
+	if (current != NULL)
+	{
 		RootLInkflag = TRUE;
-	}else{
-	while ( memcmp(current->student.ID,new_value->ID,sizeof(new_value->ID)) <= 0 
-				&& current->link != NULL){
-			if (memcmp(current->student.ID,new_value->ID,sizeof(new_value->ID)) == 0) {
+	}
+	else
+	{
+		while (memcmp(current->student.ID, new_Node->student.ID, NodeSize) <= 0 && current->link != NULL)
+		{
+
+			if (memcmp(current->student.ID, new_value->ID, NodeSize) == 0)
+			{
 				printf("学号重复\n");
 				return FALSE;
 			}
+
 			current = current->link;
 		}
 	}
-	
+
 	//创建新节点并存储新值，如果内存分配失败，函数返回 FALSE
 	new_Node = (Node *)malloc(sizeof(Node));
 	if (new_Node == NULL)
 		return FALSE;
 
-	printf("1.ok");
 	//给新节点赋值
-	strcpy(new_Node->student.ID,new_value->ID);
-	strcpy(new_Node->student.name,new_value->name);
+	strcpy(new_Node->student.ID, new_value->ID);
+	strcpy(new_Node->student.name, new_value->name);
 	new_Node->student.sex = new_value->sex;
 	new_Node->student.age = new_value->age;
-	strcpy(new_Node->student.jiGuan,new_value->jiGuan);
+	strcpy(new_Node->student.jiGuan, new_value->jiGuan);
 	new_Node->student.score = new_value->score;
 	new_Node->student.kaoQing = new_value->kaoQing;
-	strcpy(new_Node->student.phoneNumber,new_value->phoneNumber);
-	strcpy(new_Node->student.ad,new_value->ad);
-	printf("2.ok");
+	strcpy(new_Node->student.phoneNumber, new_value->phoneNumber);
+	strcpy(new_Node->student.ad, new_value->ad);
 	//插入新节点
-	
-	if (RootLInkflag == TRUE) {
+
+	if (RootLInkflag == TRUE)
+	{
 		new_Node->link = NULL;
 		root->link = new_Node;
 	}
-	
+
 	new_Node->link = current->link;
 	current->link = new_Node;
 	return TRUE;
 }
+*/
 #if false
 int sllRmINValue(Node *root, int rm_value, int times)
 {
@@ -143,8 +164,9 @@ Node *sllFree(Node *root)
 	else
 	{
 		Node *current = root->link, *previous = root;
-		
-		while(current != NULL){
+
+		while (current != NULL)
+		{
 			previous->link = current->link;
 			free(current);
 			current = previous->link;
