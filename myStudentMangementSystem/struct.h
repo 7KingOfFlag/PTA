@@ -6,7 +6,7 @@ typedef struct Student
 {
     char ID[9];
     char name[20];
-    char sex;
+    char sex[3];
     int age;
     char jiGuan[20];
 	double score;

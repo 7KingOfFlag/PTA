@@ -2,16 +2,41 @@
 #define __PRINT_STUDENT__
 #include <Stdio.h>
 #include "struct.h"
+#include "list.h"
 void printMseg(student *student){
-    printf("%s ",student->ID);
-    printf("%s  ",student->name);
-    printf("%c  ",student->sex);
-    printf("%d  ",student->age);
-    printf("%s  ",student->jiGuan);
-    printf("%.2f  ",student->score);
-    printf("%d  ",student->kaoQing);
-    printf("%s  ",student->phoneNumber);
-    printf("%s  ",student->ad);
+    printf("%-10s",student->ID);
+    printf("%-8s",student->name);
+    printf("%-5s",student->sex);
+    printf("%-5d",student->age);
+    printf("%-5s",student->jiGuan);
+    printf("%-7.2f",student->score);
+    printf("%-5d",student->kaoQing);
+    printf("%-13s",student->phoneNumber);
+    printf("%-50s",student->ad);
     printf("\n");
 }
+
+void printSll(const Root *root)
+{
+	int i;
+	if (root == NULL)
+	{
+		printf("is NULL\n");
+	}
+	else
+	{
+		Node *current;
+		current = root->link;
+		printf("%-10s%-8s%-5s%-5s%-5s%-7s%-5s%-13s%-50s\n",
+				"学号","姓名","性别","年龄","籍贯","成绩","考勤","手机号码","地址");
+		for (i = 0; i < root->size; i++)
+		{
+			printMseg(&(current->student));
+			current = current->link;
+		}
+		printf("---------------------------------------------------------------------------\n");
+	}
+}
+
+
 #endif
