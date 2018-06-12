@@ -4,14 +4,12 @@
 #include <Stdio.h>
 #include <String.h>
 #include "struct.h"
-#include "list.h"
-
+#include "print.h"
 int sllAdd(Root *root, Node *new_Node)
 {
 	Node *current;
 	current = root->link;
-	//ÂØªÊâæÊèíÂÖ•ËäÇÁÇπ
-	char RootLInkflag = FALSE;
+	//—∞’“≤Â»ÎΩ⁄µ„
 	if (current == NULL)
 	{
 		root->link = new_Node;
@@ -19,21 +17,90 @@ int sllAdd(Root *root, Node *new_Node)
 	}
 	else
 	{
-		while (memcmp(current->student.ID, new_Node->student.ID, NodeSize) <= 0 && current->link != NULL)
+		while (memcmp(current->student.ID, new_Node->student.ID, IDSIZE) <= 0 && current->link != NULL)
 		{
-
-			if (memcmp(current->student.ID, new_Node->student.ID, NodeSize) == 0)
+			if (memcmp(current->student.ID, new_Node->student.ID, IDSIZE) == 0)
 			{
-				printf("Â≠¶Âè∑ÈáçÂ§ç\n");
+				printf("??????\n");
 				return FALSE;
 			}
 			current = current->link;
 		}
 	}
-	//ÊèíÂÖ•Êñ∞ËäÇÁÇπ
+	//≤Â»Î–¬Ω⁄µ„
 	new_Node->link = current->link;
 	current->link = new_Node;
-	root->size ++;
+	root->size++;
+	return TRUE;
+}
+int AddInformation(Root *root)
+{
+	Node *new_Node = newNode();
+	if (new_Node == NULL)
+	{
+		printf("¥Ê¥¢ø’º‰“—¬˙Œﬁ∑®ÃÌº”!\n");
+		return FALSE;
+	}
+	else
+	{
+		printf(" ‰»Î“™ÃÌº”µƒ—ß‘±◊ ¡œ:\n");
+		printf(" ‰»Î—ß‘±±‡∫≈:");
+		scanf("%s", (new_Node->student.ID));
+		printf("\nn ‰»Î—ß‘±–’√˚:");
+		scanf("%s", (new_Node->student.name)); 
+		printf("\n ‰»Î—ß‘±–‘±:");
+		scanf("%s", (new_Node->student.sex)); 
+		printf("\n ‰»Î—ß‘±ƒÍ¡‰:");
+		scanf("%d", &(new_Node->student.age)); 
+		printf("\n ‰»Î—ß‘±ºÆπ·:");
+		scanf("%s", (new_Node->student.jiGuan)); 
+		printf("\n ‰»Î—ß‘±∑÷ ˝:");
+		scanf("%lf", &(new_Node->student.score)); 
+		printf("\n ‰»Î—ß‘±øº«⁄¥Œ ˝:");
+		scanf("%d", &(new_Node->student.kaoQing));
+		printf("\n ‰»Î—ß‘±µÁª∞:");
+		scanf("%s", (new_Node->student.phoneNumber)); 
+		printf("\n ‰»Î—ß‘±◊°÷∑:");
+		scanf("%s", (new_Node->student.ad)); 	
+		}
+	printf("ƒ˙ ‰»Îµƒ—ß‘±–≈œ¢»Áœ¬:\n");
+	printHaed();
+	printMseg(&(new_Node->student));
+
+	char c;
+	while (1)
+	{
+		printf(" «∑ÒΩ´—ß‘±–≈œ¢ÃÌº”÷¡œµÕ≥  «/Y ∑Ò/N \n");
+		scanf("%c", &c);
+		printf("%c %d\n", c, c);
+
+		if (c == 'Y' || c == 'y')
+		{
+			sllAdd(root, new_Node);
+			break;
+		}
+		else if (c == 'N' || c == 'N')
+		{
+			break;
+		}
+	}
+
+	while (1)
+	{
+		printf(" «∑ÒºÃ–¯ÃÌº”—ß‘±–≈œ¢? ‰»ÎYºÃ–¯£¨ ‰»ÎNΩ· ¯\n");
+		scanf("%c", &c);
+
+		if (c == 'Y' || c == 'y')
+		{
+			AddInformation(root);
+			break;
+		}
+		else if (c == 'n' || c == 'N')
+		{
+			break;
+		}
+	}
+
 	return TRUE;
 }
 

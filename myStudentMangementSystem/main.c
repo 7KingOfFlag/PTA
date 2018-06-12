@@ -1,18 +1,52 @@
 #include <Stdio.h>
 #include <String.h>
 #include "struct.h"
-#include "list.h"
-#include "print.h"
+#include "add.h"
+#include "search.h"
 void Initialization(Root *root);
 int main(void)
 {
     Root root;
     root.size = 0;
     Initialization(&root);
-    printSll(&root);
-	Node *new_Node = newNode();
 
-	printSll(&root);
+	int menu;
+	
+	do
+	{
+		printf("------------------欢迎进入学生管理系统 -----------------\n");	
+        printf("*****************************************************************\n");
+        printf("   1 添加学生资料模块 \n");
+        printf("   2 查看学生资料模块 \n");
+        printf("   3 修改学生资料模块 \n");
+        printf("   4 删除学生资料模块 \n");
+        printf("   5 退出      \n");
+        printf("*****************************************************************\n");
+        printf("输入要进入的系统模块:");
+    	
+
+        scanf("%d",&menu);	
+    
+        switch(menu)                  						//switch结构
+    	{
+        	case 1:
+				AddInformation(&root); 
+				break;                      			//添加学员资料
+			case 2:
+				searchInformation(&root);                               	//查询学员资料
+				break;
+			// case 3:revampInformation();                            		//修改学员资料
+			// break;
+			//case 4:removeInformation();                       			//删除学员资料
+				//break;
+			case 5: 
+				break;                    				//退出系统
+			default:
+				printf("输入有误，输入1-5之间的数字\n");
+				break;
+		}
+	} while (menu!=5);
+	
     return 0;
 }
 
