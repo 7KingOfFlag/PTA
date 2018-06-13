@@ -7,6 +7,9 @@
 #include "print.h"
 int sllAdd(Root *root, Node *new_Node)
 {
+	/*
+	**按学号插入学生信息
+	*/
 	Node *current;
 	current = root->link;
 	//寻找插入节点
@@ -21,7 +24,7 @@ int sllAdd(Root *root, Node *new_Node)
 		{
 			if (memcmp(current->student.ID, new_Node->student.ID, IDSIZE) == 0)
 			{
-				printf("??????\n");
+				printf("学号重复\n");
 				return FALSE;
 			}
 			current = current->link;
@@ -72,7 +75,6 @@ int AddInformation(Root *root)
 	{
 		printf("是否将学员信息添加至系统 是/Y 否/N \n");
 		scanf("%c", &c);
-		printf("%c %d\n", c, c);
 
 		if (c == 'Y' || c == 'y')
 		{

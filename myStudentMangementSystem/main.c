@@ -3,6 +3,8 @@
 #include "struct.h"
 #include "add.h"
 #include "search.h"
+#include "revamp.h"
+#include "rm.h"
 void Initialization(Root *root);
 int main(void)
 {
@@ -35,10 +37,12 @@ int main(void)
 			case 2:
 				searchInformation(&root);                               	//查询学员资料
 				break;
-			// case 3:revampInformation();                            		//修改学员资料
-			// break;
-			//case 4:removeInformation();                       			//删除学员资料
-				//break;
+			 case 3:
+			 	revampInformation(&root);                            		//修改学员资料
+				 break;
+			case 4:
+				removeInformation(&root);                       			//删除学员资料
+				break;
 			case 5: 
 				break;                    				//退出系统
 			default:
@@ -46,14 +50,14 @@ int main(void)
 				break;
 		}
 	} while (menu!=5);
-	
+	sllFree(&root);
     return 0;
 }
 
 void Initialization(Root *root){
     Node *new_Node,*current;
     new_Node= newNode();
-    strcpy(new_Node->student.ID,"63111701");
+	strcpy(new_Node->student.ID,"63111701");
 	strcpy(new_Node->student.name, "李红");
 	strcpy(new_Node->student.sex, "女");
 	new_Node->student.age = 20;

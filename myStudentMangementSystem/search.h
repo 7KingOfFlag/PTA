@@ -1,12 +1,13 @@
 #ifndef __SEARCH__ 
 #define __SEARCH__ 
-
+#include<String.h>
 #include "print.h"
 #include "show.h"
 
+Node *searchFoNmae(const Root *root);
+Node *searchFoID(const Root *root);
 void searchInformation(const Root *root){
-    int searchFoNmae(const Root *root);
-    int searchFoID(const Root *root);
+    
     int menu;
 
     do
@@ -40,7 +41,10 @@ void searchInformation(const Root *root){
     
 }
 
-int searchFoNmae(const Root *root){
+Node *searchFoNmae(const Root *root){
+    /*
+    **通过姓名查询学生信息
+    */
     char searchName[NAMESIZE];
 	printf("输入要查询的学员姓名：\n");
     scanf("%s",searchName);
@@ -50,37 +54,30 @@ int searchFoNmae(const Root *root){
     
 	if (current == NULL)
 	{
-		return FALSE;
+		return NULL;
 	}
 	else
 	{
-        int isFistFand = TRUE;
-		while (current->link != NULL)
+		while (current != NULL)
 		{
-            printf("a = %s  b = %s memcmp = %d\n",current->student.name,searchName,memcmp(current->student.name, searchName, sizeof(searchName)));
             
-			if (memcmp(current->student.name, searchName, sizeof(searchName)) == 0)
-			{
-                if (isFistFand == TRUE) {
-                    printf("名为%s的学员有：\n    ",searchName);
-                    printHaed();
-                    isFistFand = FALSE;
-                }
+			if (strcmp(current->student.name, searchName) == 0)
+            {
+                printHaed();
                 printf("    ");
                 printMseg(&(current->student));
+                return current;
 			}
 			current = current->link;
 		}
-        if (isFistFand == TRUE) {
-            printf("未找到名为%s的学员\n",searchName);
-            return FALSE;
-        }else{
-            return TRUE;
-        }
-        
+        printf("未找到名为%s的学员\n",searchName);
+        return NULL;     
 	}
 }
-int searchFoID(const Root *root){
+Node *searchFoID(const Root *root){
+    /*
+    **通过学号查询学生信息
+    */
     char searchID[IDSIZE];
 	printf("输入要查询的学员学号：\n");
     scanf("%s",searchID);
@@ -89,24 +86,24 @@ int searchFoID(const Root *root){
     
 	if (current == NULL)
 	{
-		return FALSE;
+		return NULL;
 	}
 	else
 	{
-		while (current->link != NULL)
+		while (current != NULL)
 		{
-			if (memcmp(current->student.ID, searchID, IDSIZE) == 0)
+			if (strcmp(current->student.ID, searchID) == 0)
 			{
                 printf("    ");                
                 printHaed();
                 printf("    ");
                 printMseg(&(current->student));
-				return TRUE;
+				return current;
 			}
 			current = current->link;
 		}
         printf("未找到学号为%s的学员",searchID);
-        return FALSE;
+        return NULL;
 	}
 }
 

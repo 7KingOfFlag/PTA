@@ -3,6 +3,7 @@
 
 #include <Stdio.h>
 #include <String.h>
+#include "struct.h"
 #include "search.h"
 int sllRm(Root *root, char *ID)
 {
@@ -35,7 +36,7 @@ int sllRm(Root *root, char *ID)
 	return FALSE;
 }
 
-Node *sllFree(Root *root)
+Node *sllFree(Node *root)
 {
 	/*
 	ÊÍ·Åµ¥Á´±íroot
@@ -46,14 +47,15 @@ Node *sllFree(Root *root)
 	}
 	else
 	{
-		Node *current = root->link;
+		Node *current = root->link, *previous = root;
 
 		while (current != NULL)
 		{
-			root->link = current->link;
+			previous->link = current->link;
 			free(current);
-			current = root->link;
+			current = previous->link;
 		}
+		free(root);
 		return NULL;
 	}
 }
