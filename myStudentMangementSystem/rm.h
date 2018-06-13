@@ -3,6 +3,7 @@
 
 #include <Stdio.h>
 #include <String.h>
+#include "struct.h"
 #include "search.h"
 int sllRm(Root *root, char *ID)
 {
@@ -35,7 +36,7 @@ int sllRm(Root *root, char *ID)
 	return FALSE;
 }
 
-Node *sllFree(Root *root)
+Node *sllFree(Node *root)
 {
 	/*
 	释放单链表root
@@ -46,14 +47,15 @@ Node *sllFree(Root *root)
 	}
 	else
 	{
-		Node *current = root->link;
+		Node *current = root->link, *previous = root;
 
 		while (current != NULL)
 		{
-			root->link = current->link;
+			previous->link = current->link;
 			free(current);
-			current = root->link;
+			current = previous->link;
 		}
+		free(root);
 		return NULL;
 	}
 }
@@ -70,21 +72,24 @@ void removeInformation(Root *root){
         printf("3.返回\n");
 
         scanf("%d",&menu);
-        Node *rmNode;
+        Node *rmNode = NULL;
         switch (menu)
         {
             case 1:
                 rmNode =  searchFoNmae(root);
-				if (rmUI()==TRUE) sllRm(root,rmNode->student.ID);
                 break;
             case 2:
                 rmNode = searchFoID(root);
-				if (rmUI()==TRUE) sllRm(root,rmNode->student.ID);
                 break;
             default:
 			    printf("输入有误，输入1-3之间的数字\n");
                 break;
-        }   
+        }
+		
+		if (rmNode != NULL) {
+			if (rmUI()==TRUE) sllRm(root,rmNode->student.ID);
+		}
+		
     } while (menu !=3);
 } 
 

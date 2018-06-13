@@ -33,22 +33,30 @@ void toShow(const Root *root)
         switch (menu)
         {
         case 1:
+            printf("\n通过学号排列查找学生资料\n");
             showFoID(root);
             break;
         case 2:
+            printf("\n通过姓名排列查找学生资料\n");
             mod = name;
             show(root, mod);
             break;
         case 3:
+            printf("\n通过性别排列查找学生资料\n");
             showFoSEX(root);
             break;
         case 4:
+            printf("\n通过成绩高低查找学员资料\n");
             mod = score;
             show(root, mod);
             break;
         case 5:
+            printf("\n通过考勤高低查找学员资料\n");
             mod = kaoQing;
             show(root, mod);
+            break;
+        case 6:
+            printf("退出\n");
             break;
         default:
             printf("输入有误，输入1-6之间的数字\n");
@@ -68,52 +76,63 @@ void show(const Root *root, enum showMod mod)
         Node *current = root->link;
         int i, flag;
         Node **nodeList = (Node **)malloc(sizeof(Node) * (root->size));
-        for (i = 0; current != NULL; current = current->link, i++)
+        
+        if (nodeList == NULL) 
         {
-            nodeList[i] = current;
-        }
-
-        do
+           printf("空间已满排序失败");
+        } 
+        else
         {
-            flag = TRUE;
-            for (i = 1; i < root->size; i++)
+            for (i = 0; current != NULL; current = current->link, i++)
             {
-                switch (mod)
-                {
-                case name:
-                    if (strcmp(nodeList[i - 1]->student.name, nodeList[i]->student.name) > 0)
-                    {
-                        nodePointSwp(&(nodeList[i - 1]), &(nodeList[i]));
-                        flag = FALSE;
-                    }
-                    break;
-                case score:
-                    if (nodeList[i - 1]->student.score < nodeList[i]->student.score)
-                    {
-                        nodePointSwp(&(nodeList[i - 1]), &(nodeList[i]));
-                        flag = FALSE;
-                    }
-                    break;
-                case kaoQing:
-                    if (nodeList[i - 1]->student.kaoQing < nodeList[i]->student.kaoQing)
-                    {
-                        nodePointSwp(&(nodeList[i - 1]), &(nodeList[i]));
-                        flag = FALSE;
-                    }
-                default:
-                    break;
-                }
+            nodeList[i] = current;
             }
-        } while (flag != TRUE);
 
-        printHaed();
-        for (i = 0; i < root->size; i++)
-        {
-            printMseg(&(nodeList[i]->student));
+            do
+            {
+                flag = TRUE;
+                for (i = 1; i < root->size; i++)
+                {
+                    switch (mod)
+                    {
+                    case name:
+                        if (strcmp(nodeList[i - 1]->student.name, nodeList[i]->student.name) > 0)
+                        {
+                            nodePointSwp(&(nodeList[i - 1]), &(nodeList[i]));
+                            flag = FALSE;
+                        }
+                        break;
+                    case score:
+                        if (nodeList[i - 1]->student.score < nodeList[i]->student.score)
+                        {
+                            nodePointSwp(&(nodeList[i - 1]), &(nodeList[i]));
+                            flag = FALSE;
+                        }
+                        break;
+                    case kaoQing:
+                        if (nodeList[i - 1]->student.kaoQing < nodeList[i]->student.kaoQing)
+                        {
+                            nodePointSwp(&(nodeList[i - 1]), &(nodeList[i]));
+                            flag = FALSE;
+                        }
+                    default:
+                        break;
+                    }
+                }
+            } while (flag != TRUE);
+
+            printHaed();
+            for (i = 0; i < root->size; i++)
+            {
+                printMseg(&(nodeList[i]->student));
+            }
+
+            free(nodeList);
         }
-
-        free(nodeList);
     }
+        
+        
+        
 }
 
 void showFoID(const Root *root)

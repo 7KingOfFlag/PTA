@@ -10,7 +10,7 @@ void revampInformation(Root *root){
     int menu;
     do
     {
-        printf("输入修改学员资料的方式:\n");					//输出提示信息
+        printf("输入修改学员资料的方式:\n");
         printf("1.通过姓名查找修改\n");
         printf("2.通过学号查找修改\n");
         printf("3.返回\n");
@@ -20,12 +20,17 @@ void revampInformation(Root *root){
         switch (menu)
         {
             case 1:
+                printf("\n通过姓名查找修改\n");
                 revampNode =  searchFoNmae(root);
                 revamp(revampNode);
                 break;
             case 2:
+                printf("\n通过学号查找修改\n");            
                 revampNode = searchFoID(root);
                 revamp(revampNode);
+                break;
+            case 3:
+                printf("\n退出\n");                            
                 break;
             default:
 			    printf("输入有误，输入1-3之间的数字\n");
@@ -35,7 +40,13 @@ void revampInformation(Root *root){
 }
 
 int revamp(Node *revampNode){
+    
+    if (revampNode == NULL) {
+       return FALSE;
+    }
+    
     char c;
+	getchar(); 
     while (1)
 	{
 		printf("是否修改学员信息 是/Y 否/N \n");
@@ -44,7 +55,7 @@ int revamp(Node *revampNode){
 		if (c == 'Y' || c == 'y')
 		{
             printf("输入要修改的学员资料:\n");
-            printf("\nn修改前学员姓名 :%s 修改后学员姓名:",revampNode->student.name);
+            printf("\n修改前学员姓名 :%s 修改后学员姓名:",revampNode->student.name);
             scanf("%s", (revampNode->student.name)); 
             printf("\n修改前学员性别 :%s 修改后学员性别:",revampNode->student.sex);
             scanf("%s", (revampNode->student.sex)); 

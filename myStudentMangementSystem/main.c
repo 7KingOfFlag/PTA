@@ -50,7 +50,7 @@ int main(void)
 				break;
 		}
 	} while (menu!=5);
-	sllFree(&root);
+	
     return 0;
 }
 
@@ -127,3 +127,6 @@ void Initialization(Root *root){
     current = current->link;
 	root->size = 5;
 }
+
+"63111703", "王吉", "女", 24, "湖南", 92.5, 75,"13875533445","湖南长沙步行街"
+"63111703", "王沧", "女", 21, "湖南", 100, 76,"13875533445","湖南长沙步行街"

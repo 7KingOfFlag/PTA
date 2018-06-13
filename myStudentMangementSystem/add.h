@@ -7,9 +7,6 @@
 #include "print.h"
 int sllAdd(Root *root, Node *new_Node)
 {
-	/*
-	**按学号插入学生信息
-	*/
 	Node *current;
 	current = root->link;
 	//寻找插入节点
@@ -49,7 +46,7 @@ int AddInformation(Root *root)
 		printf("输入要添加的学员资料:\n");
 		printf("输入学员编号:");
 		scanf("%s", (new_Node->student.ID));
-		printf("\nn输入学员姓名:");
+		printf("\n输入学员姓名:");
 		scanf("%s", (new_Node->student.name)); 
 		printf("\n输入学员性别:");
 		scanf("%s", (new_Node->student.sex)); 
@@ -64,12 +61,13 @@ int AddInformation(Root *root)
 		printf("\n输入学员电话:");
 		scanf("%s", (new_Node->student.phoneNumber)); 
 		printf("\n输入学员住址:");
-		scanf("%s", (new_Node->student.ad)); 	
+		scanf("%s", (new_Node->student.ad)); 
 		}
 	printf("您输入的学员信息如下:\n");
 	printHaed();
 	printMseg(&(new_Node->student));
-
+	getchar();
+	
 	char c;
 	while (1)
 	{
@@ -86,6 +84,8 @@ int AddInformation(Root *root)
 			break;
 		}
 	}
+	
+	getchar();
 
 	while (1)
 	{

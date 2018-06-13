@@ -42,9 +42,6 @@ void searchInformation(const Root *root){
 }
 
 Node *searchFoNmae(const Root *root){
-    /*
-    **通过姓名查询学生信息
-    */
     char searchName[NAMESIZE];
 	printf("输入要查询的学员姓名：\n");
     scanf("%s",searchName);
@@ -75,9 +72,6 @@ Node *searchFoNmae(const Root *root){
 	}
 }
 Node *searchFoID(const Root *root){
-    /*
-    **通过学号查询学生信息
-    */
     char searchID[IDSIZE];
 	printf("输入要查询的学员学号：\n");
     scanf("%s",searchID);

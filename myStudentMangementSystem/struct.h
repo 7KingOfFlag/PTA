@@ -10,15 +10,15 @@
 
 typedef struct Student
 {
-    char ID[IDSIZE];  	 	//学号
-    char name[NAMESIZE]; 	//姓名
-    char sex[3]; 			//性别
-    int age; 				//年龄
-    char jiGuan[20]; 		//籍贯
-	double score; 			//成绩
-	int kaoQing; 			//考勤
-	char phoneNumber[20]; 	//手机号码
-    char ad[50]; 			//地址
+    char ID[IDSIZE];
+    char name[NAMESIZE];
+    char sex[3];
+    int age;
+    char jiGuan[20];
+	double score;
+	int kaoQing;
+	char phoneNumber[20];
+    char ad[50];
 }student;
 
 typedef struct NODE
