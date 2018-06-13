@@ -33,22 +33,30 @@ void toShow(const Root *root)
         switch (menu)
         {
         case 1:
+            printf("\n通过学号排列查找学生资料\n");
             showFoID(root);
             break;
         case 2:
+            printf("\n通过姓名排列查找学生资料\n");
             mod = name;
             show(root, mod);
             break;
         case 3:
+            printf("\n通过性别排列查找学生资料\n");
             showFoSEX(root);
             break;
         case 4:
+            printf("\n通过成绩高低查找学员资料\n");
             mod = score;
             show(root, mod);
             break;
         case 5:
+            printf("\n通过考勤高低查找学员资料\n");
             mod = kaoQing;
             show(root, mod);
+            break;
+        case 6:
+            printf("退出\n");
             break;
         default:
             printf("输入有误，输入1-6之间的数字\n");

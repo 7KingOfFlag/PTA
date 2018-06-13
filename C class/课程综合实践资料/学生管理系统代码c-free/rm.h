@@ -72,21 +72,24 @@ void removeInformation(Root *root){
         printf("3.返回\n");
 
         scanf("%d",&menu);
-        Node *rmNode;
+        Node *rmNode = NULL;
         switch (menu)
         {
             case 1:
                 rmNode =  searchFoNmae(root);
-				if (rmUI()==TRUE) sllRm(root,rmNode->student.ID);
                 break;
             case 2:
                 rmNode = searchFoID(root);
-				if (rmUI()==TRUE) sllRm(root,rmNode->student.ID);
                 break;
             default:
 			    printf("输入有误，输入1-3之间的数字\n");
                 break;
-        }   
+        }
+		
+		if (rmNode != NULL) {
+			if (rmUI()==TRUE) sllRm(root,rmNode->student.ID);
+		}
+		
     } while (menu !=3);
 } 
 

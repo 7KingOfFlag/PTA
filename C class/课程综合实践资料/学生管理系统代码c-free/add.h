@@ -46,7 +46,7 @@ int AddInformation(Root *root)
 		printf("输入要添加的学员资料:\n");
 		printf("输入学员编号:");
 		scanf("%s", (new_Node->student.ID));
-		printf("\nn输入学员姓名:");
+		printf("\n输入学员姓名:");
 		scanf("%s", (new_Node->student.name)); 
 		printf("\n输入学员性别:");
 		scanf("%s", (new_Node->student.sex)); 
@@ -61,18 +61,18 @@ int AddInformation(Root *root)
 		printf("\n输入学员电话:");
 		scanf("%s", (new_Node->student.phoneNumber)); 
 		printf("\n输入学员住址:");
-		scanf("%s", (new_Node->student.ad)); 	
+		scanf("%s", (new_Node->student.ad)); 
 		}
 	printf("您输入的学员信息如下:\n");
 	printHaed();
 	printMseg(&(new_Node->student));
-
+	getchar();
+	
 	char c;
 	while (1)
 	{
 		printf("是否将学员信息添加至系统 是/Y 否/N \n");
 		scanf("%c", &c);
-		printf("%c %d\n", c, c);
 
 		if (c == 'Y' || c == 'y')
 		{
@@ -84,6 +84,8 @@ int AddInformation(Root *root)
 			break;
 		}
 	}
+	
+	getchar();
 
 	while (1)
 	{

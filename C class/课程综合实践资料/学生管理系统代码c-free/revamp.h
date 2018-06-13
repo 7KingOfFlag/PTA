@@ -20,12 +20,17 @@ void revampInformation(Root *root){
         switch (menu)
         {
             case 1:
+                printf("\n通过姓名查找修改\n");
                 revampNode =  searchFoNmae(root);
                 revamp(revampNode);
                 break;
             case 2:
+                printf("\n通过学号查找修改\n");            
                 revampNode = searchFoID(root);
                 revamp(revampNode);
+                break;
+            case 3:
+                printf("\n退出\n");                            
                 break;
             default:
 			    printf("输入有误，输入1-3之间的数字\n");
@@ -36,6 +41,7 @@ void revampInformation(Root *root){
 
 int revamp(Node *revampNode){
     char c;
+	getchar(); 
     while (1)
 	{
 		printf("是否修改学员信息 是/Y 否/N \n");
